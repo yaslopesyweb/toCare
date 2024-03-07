@@ -31,7 +31,9 @@ Retorna um array com todos os agendamentos do usuário autenticado.
 [
     {
         "id": 1,
-        "agenda": "agendamento"
+        "agenda": "dermatologista",
+        "consultório": "Unidade Paraíso",
+        "data": "30/04/2024"
         "icone": "agenda"
     }
 ]
@@ -42,7 +44,7 @@ Retorna um array com todos os agendamentos do usuário autenticado.
 |código| descrição
 |------| ---------
 |200| Lista de agendamentos retornada com sucesso
-|401| Não autenticado.
+|401| Não autenticado. Se autentique com um login.
 
 ---
 
@@ -56,7 +58,7 @@ Cadastra um agendamento com dados enviados no corpo da requisição.
 
 |campo|tipo|obrigatório|descrição
 |-----|----|-----------|---------
-|nome|string|SIM|Um nome curto para o agendamento
+|agenda|string|SIM|Um nome curto para o agendamento
 |consultorio|string|SIM|Selecionar consultorio desejado
 |data|date-time|SIM|Selecionar uma data para agendamento
 
@@ -65,17 +67,21 @@ Cadastra um agendamento com dados enviados no corpo da requisição.
 ```js
 //POST/agendamento
 {
-    "nome": "Avaliação"
+    "agenda": "Dermatologista"
 }
 ```
 
 #### Exemplo de Resposta
 ```js
-{
-    "id": 1,
-    "nome": "Avaliação"
-    "icone": "agenda"
-}
+[   
+    {
+        "id": 1,
+        "agenda": "dermatologista",
+        "consultório": "Unidade Paraíso",
+        "data": "30/04/2024"
+        "icone": "agenda"
+    }
+]
 ```
 #### Códigos de Status
 
@@ -95,18 +101,22 @@ Retorna os detalhes da categoria com o `id` informado no path.
 
 #### Exemplo de Resposta
 ```js
-{
-    "id": 1,
-    "nome": "Avaliação"
-    "icone": "agenda"
-}
+[   
+    {
+        "id": 1,
+        "agenda": "dermatologista",
+        "consultório": "Unidade Paraíso",
+        "data": "30/04/2024"
+        "icone": "agenda"
+    }
+]
 ```
 
 #### Códigos de Status
 
 |código| descrição
 |------| ---------
-|200| Agendamento foi criado com sucesso.
+|200| Agendamento retornado com sucesso.
 |401| Não autenticado. Se autentique em /login
 |403| Não autorizado. Esse agendamento não pertence ao usuário autenticado.
 |404| Não existe categoria com o `id` informado
@@ -122,7 +132,7 @@ Apaga o agendamento com o `id` informado no path
 
 |código| descrição
 |------| ---------
-|204| Agendamento foi apagado com sucesso.
+|204| Agendamento apagado com sucesso.
 |401| Não autenticado. Se autentique em /login.
 |403| Não autorizado. Esse agendamento não pertence ao usuário autenticado.
 |404| Não existe categoria com o `id` informado
@@ -138,7 +148,7 @@ Atualiza os dados do agendamento com o `id` informado no path. utilizando as inf
 
 |campo|tipo|obrigatório|descrição
 |-----|----|-----------|---------
-|nome|string|SIM|Um nome curto para o agendamento
+|agenda|string|SIM|Um nome curto para o agendamento
 |consultorio|string|SIM|Selecionar consultorio desejado
 |data|date-time|SIM|Selecionar uma data para agendamento
 
@@ -147,7 +157,7 @@ Atualiza os dados do agendamento com o `id` informado no path. utilizando as inf
 ```js
 // PUT /agendamento/1
 {
-    "nome": "Avaliação",
+    "nome": "Dermatologista",
     "icone": "agenda"
 }
 ```
@@ -156,7 +166,7 @@ Atualiza os dados do agendamento com o `id` informado no path. utilizando as inf
 ```js
 {
     "id": 1,
-    "nome": "Avaliação",
+    "nome": "Dermatologista",
     "icone": "agenda"
 }
 ```
